@@ -9,7 +9,7 @@ export const Actions = () => {
   let [userLength, setUserLength] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost/php-react/form1.php")
+    fetch("https://www.virtuallyvegas.net/api/v1/form1.php")
       .then((res) => {
         return res.json();
       })
@@ -24,7 +24,7 @@ export const Actions = () => {
       .catch((err) => {
         console.log(err);
       });
-      fetch("http://localhost/php-react/form2.php")
+      fetch("https://www.virtuallyvegas.net/api/v1/form2.php")
       .then((res) => {
         return res.json();
       })
