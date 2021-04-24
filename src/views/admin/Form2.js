@@ -42,6 +42,26 @@ export default function Form2({ color }) {
           <table className="items-center w-full bg-transparent border-collapse">
             <thead>
               <tr>
+              <th
+                  className={
+                    "px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left " +
+                    (color === "light"
+                      ? "bg-blueGray-50 text-blueGray-500 border-blueGray-100"
+                      : "bg-lightBlue-800 text-lightBlue-300 border-lightBlue-700")
+                  }
+                >
+                  	NO
+                </th>
+                <th
+                  className={
+                    "px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left " +
+                    (color === "light"
+                      ? "bg-blueGray-50 text-blueGray-500 border-blueGray-100"
+                      : "bg-lightBlue-800 text-lightBlue-300 border-lightBlue-700")
+                  }
+                >
+                  company_name
+                </th>
                 <th
                   className={
                     "px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left " +
@@ -127,36 +147,56 @@ export default function Form2({ color }) {
                 >
                   licence_plate
                 </th>
+                <th
+                  className={
+                    "px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left " +
+                    (color === "light"
+                      ? "bg-blueGray-50 text-blueGray-500 border-blueGray-100"
+                      : "bg-lightBlue-800 text-lightBlue-300 border-lightBlue-700")
+                  }
+                >
+                  signature
+                </th>
               </tr>
             </thead>
             <tbody>
               
-        {form2.map(({ id,site_location, full_name, covid_symptoms,unprotected_contact,self_isolation,area_code,phone_number,contact_person,licence_plate }) => {
+        {form2.map((x,i) => {
           return (
-<tr key={id}>
+<tr key={x.id} style={{borderBottom: "1px solid lightgray"}}>
+<th>
+    {i+1}
+  </th>
+  <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+                  
+                  {x.company_name}
+              </th>
                 <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-             
-                    {site_location}
+                  
+                    {x.site_location}
                 </th>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                {full_name}
+                {x.full_name}
                 </td>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                {covid_symptoms}
+                {x.covid_symptoms}
                 </td>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                {unprotected_contact}
+                {x.unprotected_contact}
                 </td>                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                {self_isolation}
+                {x.self_isolation}
                 </td>                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                {area_code}
+                {x.area_code}
                 </td>                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                {phone_number}
+                {x.phone_number}
                 </td>                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                {contact_person}
+                {x.contact_person}
                 </td>                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                {licence_plate}
+                {x.licence_plate}
                 </td>
+                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                <img src={(x.signature) === "" || null ? ("https://i.stack.imgur.com/y9DpT.jpg") : ("https://www.virtuallyvegas.net/api/"+x.signature)} style={{height: "40px",width: "auto"}} loading="lazy" />               
+                  </td>
               </tr>
               
           )})}

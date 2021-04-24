@@ -5,6 +5,7 @@ import { AppContext } from "../../Context";
 // components
 
 import TableDropdown from "components/Dropdowns/TableDropdown.js";
+import { auto } from "@popperjs/core";
 
 export default function Form1({ color }) {
   const {
@@ -42,6 +43,17 @@ export default function Form1({ color }) {
           <table className="items-center w-full bg-transparent border-collapse">
             <thead>
               <tr>
+                
+              <th
+                  className={
+                    "px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left " +
+                    (color === "light"
+                      ? "bg-blueGray-50 text-blueGray-500 border-blueGray-100"
+                      : "bg-lightBlue-800 text-lightBlue-300 border-lightBlue-700")
+                  }
+                >
+                  NO	
+                </th>
                 <th
                   className={
                     "px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left " +
@@ -104,29 +116,33 @@ export default function Form1({ color }) {
             </thead>
             <tbody>
               
-        {form1.map(({ id,site_location, full_name, covid_symptoms,unprotected_contact,self_isolation,signature}) => {
+        {form1.map((x,i) => {
           return (
-<tr key={id}>
+<tr key={x.id}  style={{borderBottom: "1px solid lightgray"}}>
+  <th>
+    {i+1}
+  </th>
                 <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
              
-                    {site_location}
+                    {x.site_location}
                 </th>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                {full_name}
+                {x.full_name}
                 </td>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                {covid_symptoms}
+                {x.covid_symptoms}
                 </td>                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                {unprotected_contact}
+                {x.unprotected_contact}
                 </td>                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                {self_isolation}
+                {x.self_isolation}
                 </td>                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                {signature}
+                  <img src={(x.signature) === "" || null ? ("https://i.stack.imgur.com/y9DpT.jpg") : ("https://www.virtuallyvegas.net/api/"+x.signature)} style={{height: "40px",width: "auto"}} loading="lazy" />               
                 </td>
+                
               </tr>
               
-          )})}
               
+          )})}
             </tbody>
           </table>
         </div>
